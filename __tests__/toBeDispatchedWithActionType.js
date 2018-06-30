@@ -1,7 +1,7 @@
 require("../src");
 
 const expectedActionType = "EXPECTED_ACTION_TYPE";
-describe("dispatchWithActionType", () => {
+describe("toBeDispatchedWithActionType", () => {
   describe("invalid parameters", () => {
     it("fails if no calls made", () => {
       const dispatchMock = jest.fn();

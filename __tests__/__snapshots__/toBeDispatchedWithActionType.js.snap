@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toBeDispatchedWithActionType affirmative tests fails if actionType is never dispatched 1`] = `
+"[2mexpect([22m[31mdispatch[39m[2m).dispatchedWithActionType([22m[32mactionType[39m[2m)[22m 
+
+ Expected action type [32m\\"EXPECTED_ACTION_TYPE\\"[39m to have been dispatched but it wasn't"
+`;
+
+exports[`toBeDispatchedWithActionType invalid parameters fails if dispatchMock is not a mock 1`] = `"Value provided is not a mock function"`;
+
+exports[`toBeDispatchedWithActionType invalid parameters fails if no calls made 1`] = `"Dispatch not called"`;
+
+exports[`toBeDispatchedWithActionType invalid parameters fails if no expectedActionType provided 1`] = `"ActionType not provided"`;
