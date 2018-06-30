@@ -56,6 +56,8 @@ Difference:
 [2m  ][22m"
 `;
 
+exports[`toBeDispatchedWithActionTypeOrder invalid parameters fails if mock function not passed to expect 1`] = `"Value provided is not a mock function"`;
+
 exports[`toBeDispatchedWithActionTypeOrder negative tests fails if action type dispatch order matches 1`] = `
 "[2mexpect([22m[31mdispatch[39m[2m).not.toBeDispatchedWithActionTypeOrder([22m[32mactionTypeOrder[39m[2m)[22m
 

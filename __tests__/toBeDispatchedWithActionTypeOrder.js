@@ -5,6 +5,25 @@ describe("toBeDispatchedWithActionTypeOrder", () => {
   const actionType2 = "ACTION_TYPE_2";
   const actionType3 = "ACTION_TYPE_3";
   const expectedActionTypeOrder = [actionType1, actionType2, actionType3];
+  describe("invalid parameters", () => {
+    it("fails if mock function not passed to expect", () => {
+      const myFunc = function fn() {
+        /** */
+      };
+      let error;
+      try {
+        expect(myFunc).toBeDispatchedWithActionTypeOrder(
+          expectedActionTypeOrder
+        );
+      } catch (e) {
+        error = e;
+      }
+
+      expect(error).toBeDefined();
+      expect(error.message).toMatchSnapshot();
+    });
+  });
+
   describe("affirmative tests", () => {
     it("passes if actionTypes are dispatched in correct order", () => {
       const dispatchMock = jest.fn();
