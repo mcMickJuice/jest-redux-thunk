@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toBeDispatchedWithActionTypeOrder affirmative tests fails if actionTypes are not dispatched in correct order 1`] = `
+"Expected Dispatched Action Types (in order):
+[32m[\\"ACTION_TYPE_1\\", \\"ACTION_TYPE_2\\", \\"ACTION_TYPE_3\\"][39m
+
+Actual Dispatched Action Types (in order):
+[31m[\\"ACTION_TYPE_1\\", \\"ACTION_TYPE_3\\", \\"ACTION_TYPE_2\\"][39m
+
+Difference:
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  Array [[22m
+[2m    \\"ACTION_TYPE_1\\",[22m
+[31m+   \\"ACTION_TYPE_3\\",[39m
+[2m    \\"ACTION_TYPE_2\\",[22m
+[32m-   \\"ACTION_TYPE_3\\",[39m
+[2m  ][22m"
+`;
+
+exports[`toBeDispatchedWithActionTypeOrder affirmative tests fails if no dispatches are made 1`] = `
+"Expected Dispatched Action Types (in order):
+[32m[\\"ACTION_TYPE_1\\", \\"ACTION_TYPE_2\\", \\"ACTION_TYPE_3\\"][39m
+
+Actual Dispatched Action Types (in order):
+[31m[][39m
+
+Difference:
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- Array [[39m
+[32m-   \\"ACTION_TYPE_1\\",[39m
+[32m-   \\"ACTION_TYPE_2\\",[39m
+[32m-   \\"ACTION_TYPE_3\\",[39m
+[32m- ][39m
+[31m+ Array [][39m"
+`;
+
+exports[`toBeDispatchedWithActionTypeOrder affirmative tests fails if one or more expect action types is not dispatched 1`] = `
+"Expected Dispatched Action Types (in order):
+[32m[\\"ACTION_TYPE_1\\", \\"ACTION_TYPE_2\\", \\"ACTION_TYPE_3\\"][39m
+
+Actual Dispatched Action Types (in order):
+[31m[\\"ACTION_TYPE_1\\", \\"ACTION_TYPE_2\\"][39m
+
+Difference:
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  Array [[22m
+[2m    \\"ACTION_TYPE_1\\",[22m
+[2m    \\"ACTION_TYPE_2\\",[22m
+[32m-   \\"ACTION_TYPE_3\\",[39m
+[2m  ][22m"
+`;
+
+exports[`toBeDispatchedWithActionTypeOrder negative tests fails if action type dispatch order matches 1`] = `
+"[2mexpect([22m[31mdispatch[39m[2m).not.toBeDispatchedWithActionTypeOrder([22m[32mactionTypeOrder[39m[2m)[22m
+
+Expected action type sequence not to have matched but it did"
+`;
