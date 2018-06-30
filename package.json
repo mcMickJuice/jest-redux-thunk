@@ -1,7 +1,7 @@
 {
   "name": "jest-redux-thunk",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
   "repository": "https://github.com/mcMickJuice/jest-redux-thunk",
   "author": "Mike Joyce <michael.joyce@target.com>",
   "license": "MIT",
@@ -15,6 +15,7 @@
     "typescript": "^2.9.2"
   },
   "scripts": {
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "test": "jest"
   }
 }
