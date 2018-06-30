@@ -1,14 +1,29 @@
+const assertIsMockFunction = (mock: any) => {
+  if (mock._isMockFunction !== true) {
+    throw new Error("Value provided is not a mock function");
+  }
+};
+
+const assertActionTypeProvided = (actionType: any) => {
+  if (actionType == null) {
+    throw new Error("ActionType not provided");
+  }
+};
+
 expect.extend({
-  dispatchedWithActionType(
+  toBeDispatchedWithActionType(
     receivedDispatchMock: jest.Mock,
     expectedActionType: string
   ) {
+    assertIsMockFunction(receivedDispatchMock);
+    assertActionTypeProvided(expectedActionType);
+
     // assert this is a mock
     const calls = receivedDispatchMock.mock.calls;
     // check to see if dispatchMock was called at all
     if (calls.length === 0) {
       return {
-        message: () => "Dispatch not called at all",
+        message: () => "Dispatch not called",
         pass: false
       };
     }
