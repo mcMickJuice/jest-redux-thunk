@@ -17,7 +17,9 @@ describe("dispatchWithActionType", () => {
       expect(error.message).toMatchSnapshot();
     });
     it("fails if dispatchMock is not a mock", () => {
-      const myFunc = function fn() {};
+      const myFunc = function fn() {
+        /** */
+      };
       let error: any;
       try {
         expect(myFunc).toBeDispatchedWithActionType(expectedActionType);
@@ -32,7 +34,8 @@ describe("dispatchWithActionType", () => {
       const dispatchMock = jest.fn();
       let error: any;
       try {
-        expect(dispatchMock).toBeDispatchedWithActionType();
+        // tell typescript to shutup
+        expect(dispatchMock).toBeDispatchedWithActionType(undefined as any);
       } catch (e) {
         error = e;
       }
