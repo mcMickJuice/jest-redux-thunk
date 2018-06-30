@@ -1,4 +1,4 @@
-import "../src";
+require("../src");
 
 const expectedActionType = "EXPECTED_ACTION_TYPE";
 describe("dispatchWithActionType", () => {
@@ -6,7 +6,7 @@ describe("dispatchWithActionType", () => {
     it("fails if no calls made", () => {
       const dispatchMock = jest.fn();
 
-      let error: any;
+      let error;
       try {
         expect(dispatchMock).toBeDispatchedWithActionType(expectedActionType);
       } catch (e) {
@@ -20,7 +20,7 @@ describe("dispatchWithActionType", () => {
       const myFunc = function fn() {
         /** */
       };
-      let error: any;
+      let error;
       try {
         expect(myFunc).toBeDispatchedWithActionType(expectedActionType);
       } catch (e) {
@@ -32,10 +32,10 @@ describe("dispatchWithActionType", () => {
     });
     it("fails if no expectedActionType provided", () => {
       const dispatchMock = jest.fn();
-      let error: any;
+      let error;
       try {
         // tell typescript to shutup
-        expect(dispatchMock).toBeDispatchedWithActionType(undefined as any);
+        expect(dispatchMock).toBeDispatchedWithActionType(undefined);
       } catch (e) {
         error = e;
       }
@@ -53,7 +53,7 @@ describe("dispatchWithActionType", () => {
         type: "SOMETHING_ELSE"
       });
 
-      let error: any;
+      let error;
       try {
         expect(dispatchMock).toBeDispatchedWithActionType(expectedActionType);
       } catch (e) {
