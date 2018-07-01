@@ -4,11 +4,11 @@ Custom jest matchers to help with testing redux thunk actions
 
 ## The problem
 
-Your redux actions leverage [redux-thunk](https://github.com/reduxjs/redux-thunk) and you want to test them. However, testing dispatch function as a thunk involves digging into `mock.calls` properties and results in a bunch of boilerplate in order to make certain assertions.
+Your redux actions leverage [redux-thunk](https://github.com/reduxjs/redux-thunk) and you want to test them. There are many ways to perform testing on redux actions, but to keep it simple, I tend to just use [jest mock functions](http://jestjs.io/docs/en/mock-functions.html). However, testing dispatch function as a thunk in this way involves digging into `mock.calls` properties and results in a bunch of boilerplate in order to make certain assertions.
 
 ## This solution
 
-`jest-redux-thunk` provides a set of custom jest matchers that are specific to testing redux-thunk actions. This includes looking for the `type` property on action objects and outputting helpful test failure messages.
+`jest-redux-thunk` provides a set of custom jest matchers that are specific to testing redux-thunk actions using the mock function approach. This includes looking for the `type` property on action objects and outputting helpful test failure messages.
 
 ## Installation
 
