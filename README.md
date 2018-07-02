@@ -60,6 +60,42 @@ it('dispatches story load actions in correct order', () => {
 
 This matcher will fail if the order in which actions are dispatched doesn't match expected order or if expected action(s) was not dispatched at all.
 
+### `toBeDispatchedWithAction`
+
+Asserts that an action and its data match what is dispatched. This is similar to `toMatchObject` where the subset comparison is performed on each key of the action (e.g. `payload`, `meta`, etc)
+
+```javascript
+import `jest-redux-thunk`
+
+it('dispatches LOAD_STORY action', () => {
+  const dispatchMock = jest.fn()
+
+  dispatchMock ({
+    type: 'LOAD_STORY',
+    payload: {
+      items: ['book1', 'book2', 'book3']
+    },
+    meta: {
+     isLoading: false
+    }
+  })
+
+  expect(dispatchMock).toBeDispatchedWithAction({
+    type: 'LOAD_STORY',
+    // this payload object is a subset of the payload object above
+    payload: {
+      items: ['book1', 'book2', 'book3']
+    }
+  })
+})
+```
+
+This matcher will fail if:
+
+- no action is dispatched
+- multiple actions with the same expected action.type are dispatched
+- the action dispatched does not match the expected action (using similar logic to `toMatchObject`)
+
 # FAQ (actually, just one question that some might have regarding these matchers)
 
 > Why not just use `toHaveBeenCalledWith`?
