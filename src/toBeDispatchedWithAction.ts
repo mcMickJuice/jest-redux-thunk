@@ -34,9 +34,9 @@ function toBeDispatchedWithAction(
     };
   }
 
-  const matchingActionTypeCalls = calls.filter(
-    call => call[0].type === expectedAction.type
-  );
+  const matchingActionTypeCalls = calls.filter(call => {
+    return call[0] != null && call[0].type === expectedAction.type;
+  });
 
   if (matchingActionTypeCalls.length === 0) {
     return {

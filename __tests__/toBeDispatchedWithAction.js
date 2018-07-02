@@ -180,5 +180,52 @@ describe("toBeDispatchedWithAction", () => {
         }
       });
     });
+
+    it("passes if multiple actions are dispatched", () => {
+      const dispatchMock = jest.fn();
+      const expectedActionType = "SOMETHING";
+
+      dispatchMock({
+        type: "ANOTHER TYPE",
+        payload: {
+          name: "mike"
+        }
+      });
+
+      dispatchMock({
+        type: expectedActionType,
+        payload: {
+          items: [1, 2, 3]
+        }
+      });
+
+      expect(dispatchMock).toBeDispatchedWithAction({
+        type: expectedActionType,
+        payload: {
+          items: [1, 2, 3]
+        }
+      });
+    });
+
+    it("passes if undefined is dispatched", () => {
+      const dispatchMock = jest.fn();
+      const expectedActionType = "SOMETHING";
+
+      dispatchMock(undefined);
+
+      dispatchMock({
+        type: expectedActionType,
+        payload: {
+          items: [1, 2, 3]
+        }
+      });
+
+      expect(dispatchMock).toBeDispatchedWithAction({
+        type: expectedActionType,
+        payload: {
+          items: [1, 2, 3]
+        }
+      });
+    });
   });
 });
