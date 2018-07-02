@@ -8,7 +8,6 @@ function toBeDispatchedWithActionType(
   assertIsMockFunction(receivedDispatchMock);
   assertActionTypeProvided(expectedActionType);
 
-  // assert this is a mock
   const calls = receivedDispatchMock.mock.calls;
   // check to see if dispatchMock was called at all
   if (calls.length === 0) {
