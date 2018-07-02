@@ -1,3 +1,5 @@
+export { toMatchObjectComparison } from "./jest-utils";
+
 export const assertIsMockFunction = (mock: any) => {
   if (mock._isMockFunction !== true) {
     throw new Error("Value provided is not a mock function");
