@@ -12,5 +12,13 @@ declare namespace jest {
     toBeDispatchedWithActionTypeOrder: (
       actionTypesInExpectedOrder: string[]
     ) => R;
+
+    /**
+     * Expects that passed in mock function has been called with an action that matches
+     * expected action using subset matching (similar to "toMatchObject" functionality)
+     */
+    toBeDispatchedWithAction: (
+      action: { type: string; [prop: string]: any }
+    ) => R;
   }
 }

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toBeDispatchedWithAction affirmative tests fails if action.type is dispatched multiple times 1`] = `"Action of type SOMETHING dispatched multiple times. This matcher only supports action dispatched one time"`;
+
+exports[`toBeDispatchedWithAction affirmative tests fails if action.type is never dispatched 1`] = `"No Action dispatched with type SOMETHING"`;
+
+exports[`toBeDispatchedWithAction invalid parameters fails if action.type is undefined 1`] = `"ActionType not provided"`;
+
+exports[`toBeDispatchedWithAction invalid parameters fails if dispatchMock is not a mock 1`] = `"Value provided is not a mock function"`;
+
+exports[`toBeDispatchedWithAction invalid parameters fails if no calls are made 1`] = `"Dispatch not called"`;
