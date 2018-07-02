@@ -1,5 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`toBeDispatchedWithAction affirmative tests fails if action is not subset of actual dispatched action - different payload properties 1`] = `
+"Expected Dispatched Action:
+[32m{\\"payload\\": {\\"name\\": \\"mike\\"}, \\"type\\": \\"SOMETHING\\"}[39m
+
+Actual Dispatched Action Types (in order):
+[31m{\\"payload\\": {\\"items\\": [1, 2, 3]}, \\"type\\": \\"SOMETHING\\"}[39m
+
+Difference:
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  Object {[22m
+[2m    \\"payload\\": Object {[22m
+[32m-     \\"name\\": \\"mike\\",[39m
+[31m+     \\"items\\": Array [[39m
+[31m+       1,[39m
+[31m+       2,[39m
+[31m+       3,[39m
+[31m+     ],[39m
+[2m    },[22m
+[2m    \\"type\\": \\"SOMETHING\\",[22m
+[2m  }[22m"
+`;
+
+exports[`toBeDispatchedWithAction affirmative tests fails if action is not subset of actual dispatched action - payload properties don't match 1`] = `
+"Expected Dispatched Action:
+[32m{\\"payload\\": {\\"items\\": [1, 2]}, \\"type\\": \\"SOMETHING\\"}[39m
+
+Actual Dispatched Action Types (in order):
+[31m{\\"payload\\": {\\"items\\": [1, 2, 3]}, \\"type\\": \\"SOMETHING\\"}[39m
+
+Difference:
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  Object {[22m
+[2m    \\"payload\\": Object {[22m
+[2m      \\"items\\": Array [[22m
+[2m        1,[22m
+[2m        2,[22m
+[31m+       3,[39m
+[2m      ],[22m
+[2m    },[22m
+[2m    \\"type\\": \\"SOMETHING\\",[22m
+[2m  }[22m"
+`;
+
 exports[`toBeDispatchedWithAction affirmative tests fails if action.type is dispatched multiple times 1`] = `"Action of type SOMETHING dispatched multiple times. This matcher only supports action dispatched one time"`;
 
 exports[`toBeDispatchedWithAction affirmative tests fails if action.type is never dispatched 1`] = `"No Action dispatched with type SOMETHING"`;

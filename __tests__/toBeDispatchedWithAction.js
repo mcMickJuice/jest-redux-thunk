@@ -83,42 +83,102 @@ describe("toBeDispatchedWithAction", () => {
       expect(error).toBeDefined();
       expect(error.message).toMatchSnapshot();
     });
-    it("fails if action is not subset of actual dispatched action", () => {
-      // const dispatchMock = jest.fn();
+    it("fails if action is not subset of actual dispatched action - different payload properties", () => {
+      const dispatchMock = jest.fn();
       const expectedActionType = "SOMETHING";
 
-      // dispatchMock({
-      //   type: expectedActionType,
-      //   payload: {
-      //     items: [1, 2, 3],
-      //     jasper: "hi"
-      //   }
-      // });
+      dispatchMock({
+        type: expectedActionType,
+        payload: {
+          items: [1, 2, 3]
+        }
+      });
 
-      // expect(dispatchMock).toBeDispatchedWithAction({
-      //   type: expectedActionType,
-      //   payload: {
-      //     items: [1, 2, 4]
-      //   }
-      // });
+      let error;
 
-      const actual = {
+      try {
+        expect(dispatchMock).toBeDispatchedWithAction({
+          type: expectedActionType,
+          payload: {
+            name: "mike"
+          }
+        });
+      } catch (e) {
+        error = e;
+      }
+
+      expect(error).toBeDefined();
+      expect(error.message).toMatchSnapshot();
+    });
+
+    it("fails if action is not subset of actual dispatched action - payload properties don't match", () => {
+      const dispatchMock = jest.fn();
+      const expectedActionType = "SOMETHING";
+
+      dispatchMock({
+        type: expectedActionType,
+        payload: {
+          items: [1, 2, 3]
+        }
+      });
+
+      let error;
+
+      try {
+        expect(dispatchMock).toBeDispatchedWithAction({
+          type: expectedActionType,
+          payload: {
+            items: [1, 2]
+          }
+        });
+      } catch (e) {
+        error = e;
+      }
+
+      expect(error).toBeDefined();
+      expect(error.message).toMatchSnapshot();
+    });
+
+    it("passes if action is subset of actual dispatched action - meta check", () => {
+      const dispatchMock = jest.fn();
+      const expectedActionType = "SOMETHING";
+
+      dispatchMock({
+        type: expectedActionType,
+        meta: {
+          message: "hi"
+        },
+        payload: {
+          items: [1, 2, 3]
+        }
+      });
+
+      expect(dispatchMock).toBeDispatchedWithAction({
+        type: expectedActionType,
+        meta: {
+          message: "hi"
+        }
+      });
+    });
+
+    it("passes if action is subset of actual dispatched action - property subset", () => {
+      const dispatchMock = jest.fn();
+      const expectedActionType = "SOMETHING";
+
+      dispatchMock({
         type: expectedActionType,
         payload: {
           items: [1, 2, 3],
-          jasper: "hi"
+          name: "mike"
         }
-      };
+      });
 
-      const expected = {
+      expect(dispatchMock).toBeDispatchedWithAction({
         type: expectedActionType,
         payload: {
-          items: [1, 2]
+          items: [1, 2, 3]
         }
-      };
-
-      expect(actual).toMatchObject(expected);
+      });
     });
-    // it('passes if action is subset of actual dispatched action')
   });
 });

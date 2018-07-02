@@ -56,10 +56,14 @@ function toBeDispatchedWithAction(
 
   const matchingDispatchedAction = matchingActionTypeCalls[0][0];
 
-  const pass = toMatchObjectComparison(
-    matchingDispatchedAction,
-    expectedAction
-  );
+  const { type: _, ...otherProps } = expectedAction;
+
+  const pass = Object.keys(otherProps).every(propKey => {
+    const actual = matchingDispatchedAction[propKey];
+    const expected = expectedAction[propKey];
+
+    return toMatchObjectComparison(actual, expected);
+  });
 
   const message = pass
     ? () =>
